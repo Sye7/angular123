@@ -1,0 +1,29 @@
+<div  class="w3-show-inline-block" align="left">
+    <button class="btn btn-info" >
+    `<a style="text-decoration: none; color:rgb(34, 33, 31); font-size: large" routerLink="/home" routerLinkActive="active">Home</a>
+    </button>
+<button class="btn btn-info" >
+<a style="text-decoration: none; color:rgb(34, 33, 31); font-size: large" routerLink="/contact" routerLinkActive="inactive">contact us</a>
+</button>
+<button class="btn btn-info" >
+<a style="text-decoration: none; color:rgb(34, 33, 31); font-size: large" routerLink="/about " routerLinkActive="inactive">about us</a>
+</button>
+</div>
+<div style="background-image: url(/src/assets/Img/WhatsApp\ Image\ 2020-09-24\ at\ 3.32.29\ PM.jpeg);">
+    <h1 align="center">CENTER LIST</h1>
+<table class="table-responsive-xl" border="1">
+    <tr>
+        <th>CENTER ID </th>
+        <th>CENTER NAME</th>
+        <th>CENTER CONTACT NUMBER</th>
+        <th>CENTER LOCATION</th>
+    </tr>
+
+    <tr *ngFor="let center of centers">
+        <td >{{center.centerId}}</td>
+        <td>{{center.centerName}}</td>
+         <td>{{center.contactNumber}}</td>           
+        <td>{{center.centerLocation}}</td>
+    
+    </tr>
+</table>

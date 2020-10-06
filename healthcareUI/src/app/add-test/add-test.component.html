@@ -1,0 +1,96 @@
+<div  class="w3-show-inline-block" align="left">
+    <button class="btn btn-info" >
+    `<a style="text-decoration: none; color:rgb(34, 33, 31); font-size: large" routerLink="/home" routerLinkActive="active">Home</a>
+    </button>
+<button class="btn btn-info" >
+<a style="text-decoration: none; color:rgb(34, 33, 31); font-size: large" routerLink="/contact" routerLinkActive="inactive">contact us</a>
+</button>
+<button class="btn btn-info" >
+<a style="text-decoration: none; color:rgb(34, 33, 31); font-size: large" routerLink="/about " routerLinkActive="inactive">about us</a>
+</button>
+
+    <div class ="container" align=center>
+        
+    <form #Form ="ngForm" (ngSubmit)="Form.valid && addTest(Form)">
+        <div >
+            <h1 align="CENTER">ADD TEST TO DIAGNOSTIC CENTER</h1><br><br>
+            
+        </div>
+
+        <br>
+        <div>
+            <label>test Id</label>
+            <input type="text"  title="Valid idOnly" class="form-control"  
+            name="id" placeholder="Enter Center id" ngModel #nameCtrl=ngModel required>
+            
+        </div>
+        
+        <br>
+        <div>
+            <label>test NAME</label>
+            <input type="text" title="Valid Name Only" class="form-control"  
+            name="name" placeholder="Enter test Name" ngModel #nameCtrl=ngModel required>
+            
+        </div>
+        <br>
+        <div>
+            <label>test price</label>
+            <input type="text"  title="Valid test price Only" class="form-control"  
+            name="price" placeholder="Enter price " ngModel #nameCtrl=ngModel required>
+            
+        </div>
+        <br>
+        <div>
+            <label>enter center ID</label>
+            <input type="text" title="Valid center id Only" class="form-control"  
+            name="centerId" placeholder="Enter center id Name" ngModel #nameCtrl=ngModel required>
+            
+        </div>
+        <br>
+        
+        <div>
+            <button class="btn btn-success" type="submit" >ADD test</button>
+        </div>
+        
+        </form>
+        </div>
+        <br>
+
+        
+        
+      <div *ngIf="foundStatus==='found'">
+          <div *ngIf="errorField===null">
+              <div class="alert alert-sucess alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <dialog style="color: lightgreen; " open>
+               <h3><b>Test ADDED SUCESSFULLY</b></h3>
+                   <b>{{addedTest.testName}}</b>
+                              with <b> test ID  </b>
+                   <b>{{addedTest.testId}}</b>
+              </dialog>
+          </div>
+          </div>
+          </div>
+       
+      <br>
+      
+        <div *ngIf= "errorField!==null">
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <dialog style="color: red; " open>
+            <h3><b>ERROR </b>!!</h3> 
+            <div *ngFor="let item of errorField | keyvalue | slice:0:1">
+               <h1><b>{{item.value}}</b></h1>
+            </div>
+            <b>WITH NAME</b>
+          <H1> {{addedTest.testName}}
+                
+          </H1>
+          
+        </dialog>
+         </div>
+    <br>
+    
+         
+        </div>
+         

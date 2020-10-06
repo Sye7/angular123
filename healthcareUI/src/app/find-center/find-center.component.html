@@ -1,0 +1,66 @@
+<div  class="w3-show-inline-block" align="left">
+    <button class="btn btn-info" >
+    `<a style="text-decoration: none; color:rgb(34, 33, 31); font-size: large" routerLink="/home" routerLinkActive="active">Home</a>
+    </button>
+<button class="btn btn-info" >
+<a style="text-decoration: none; color:rgb(34, 33, 31); font-size: large" routerLink="/contact" routerLinkActive="inactive">contact us</a>
+</button>
+<button class="btn btn-info" >
+<a style="text-decoration: none; color:rgb(34, 33, 31); font-size: large" routerLink="/about " routerLinkActive="inactive">about us</a>
+</button>
+</div>
+<div align="center">
+    
+    <form class="container" #form ="ngForm"  (ngSubmit)="form.valid && findCenter(form)">
+        <div align="center"> 
+           <h1>SEARCH CENTER</h1>
+           <div>
+               <label>CENTER ID</label>
+               <input type="text" class="form-control" name="centerId" placeholder="Enter CenterId:" ngModel  #centerIdCtrl=ngModel required >
+               <div *ngIf="centerIdCtrl.errors!=null && centerIdCtrl.errors.required">
+                    required
+               </div>
+               
+           </div>
+       </div>
+       <br>
+       <button class="btn btn-success" type="submit">Find Center</button>
+    </form>
+    
+    <div *ngIf="foundStatus==='found'">
+        <div class="alert alert-sucess alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <dialog style="color: lightgreen; " open>
+       centerId=   {{foundCenter.centerId}}
+       <br>
+       centerName= {{foundCenter.centerName}}
+       <br>
+       contactNumber = {{foundCenter.contactNumber}}
+       <br>
+       centerLocation= {{foundCenter.centerLocation}}
+       <br>
+        listOfTest= {{foundCenter.listOfTest}}
+    </dialog>
+    </div>
+    </div>
+    
+    
+    <div *ngIf="foundStatus=='notfound'">
+        <div *ngIf="errorField!==null">
+            <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <dialog style="color: red; " open>
+             <h3><b>Not Found </b>!!</h3> 
+                <div *ngFor="let item of errorField | keyvalue | slice:0:1">
+                    <b>{{item.value}}</b>
+                </div>
+                    </dialog>
+            </div>
+    
+                
+        </div>
+    
+    </div>
+       
+      
+    </div>
